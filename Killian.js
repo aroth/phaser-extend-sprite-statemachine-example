@@ -69,7 +69,7 @@ Killian = function( game, x, y ){
 
   // sitting
   this.sm.transition('sitting_to_laying', 'sitting', 'laying', function(){
-    return ( new Date() - self.sm.timer > 1500 );
+    return ( new Date() - self.sm.timer > 2500 );
   });
 
   // laying
@@ -78,7 +78,7 @@ Killian = function( game, x, y ){
   });
 
   this.sm.transition('laying_to_sleeping', 'laying', 'sleeping', function(){
-    return ( new Date() - self.sm.timer > 1500 );
+    return ( new Date() - self.sm.timer > 2500 );
   });
   
   // sleeping

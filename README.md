@@ -1,1 +1,1 @@
-# phaser-extend-sprite-statemachine-example
+![Screenshot](http://i.imgur.com/0zOAp0o.png)

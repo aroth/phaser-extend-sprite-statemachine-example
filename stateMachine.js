@@ -1,8 +1,8 @@
 // modified from https://github.com/drhayes/impactjs-statemachine
 var StateMachine = function( entity, opts ) {
-	this.unnamedTransitionCounter = 0;
+  this.unnamedTransitionCounter = 0;
 
-	this.entity = entity;
+  this.entity = entity;
   this.opts = opts || {};
 
   this.states = {};
@@ -57,34 +57,34 @@ var StateMachine = function( entity, opts ) {
     }
     var state = this.state(this.currentState);
 
-		if (this.previousState !== this.currentState) {
-			if( this.lastTransition ){
-				this.entity.animations.play( this.lastTransition.name );
-				if( this.opts.debug ){
-				  console.log("Play transitional animation: " + this.lastTransition.name );
+    if (this.previousState !== this.currentState) {
+      if( this.lastTransition ){
+        this.entity.animations.play( this.lastTransition.name );
+        if( this.opts.debug ){
+          console.log("Play transitional animation: " + this.lastTransition.name );
         }
-			}
-		
-		  if (state.enter) {
-  		  this.timer = new Date();
+      }
+    
+      if (state.enter) {
+        this.timer = new Date();
         state.enter( this.lastTransition );
       }
       this.previousState = this.currentState;
-		}
-		
-		// Verify the transitional animation has completed before entering update()
+    }
+    
+    // Verify the transitional animation has completed before entering update()
     if( this.lastTransition && 
-			  ( this.entity.animations.currentAnim.name == this.lastTransition.name && this.entity.animations.currentAnim.isPlaying ) ){
+        ( this.entity.animations.currentAnim.name == this.lastTransition.name && this.entity.animations.currentAnim.isPlaying ) ){
       return;
     }
 
-		if( this.entity.animations.currentAnim.name != this.currentState ){
-			if( this.opts.debug ){
-			  console.log("Play animation: " + this.currentState );
-			}
-			this.entity.animations.play( this.currentState );
-		}
-		
+    if( this.entity.animations.currentAnim.name != this.currentState ){
+      if( this.opts.debug ){
+        console.log("Play animation: " + this.currentState );
+      }
+      this.entity.animations.play( this.currentState );
+    }
+    
     if (state.update) {
       state.update();
     }
@@ -93,7 +93,7 @@ var StateMachine = function( entity, opts ) {
       var transition = this.transitions[name];
       if (transition.fromState === this.currentState &&
           transition.predicate()) {
-				this.lastTransition = transition;
+        this.lastTransition = transition;
         if (state.exit) {
           state.exit();
         }
