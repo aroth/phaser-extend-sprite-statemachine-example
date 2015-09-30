@@ -1,37 +1,38 @@
 <!doctype html>
 <html>
-   <head>
-	   <meta charset="UTF-8" />
-	   <title>Killian - Phaser Demo</title>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Killian - Phaser Demo</title>
 		<script src="http://cdn.jsdelivr.net/phaser/2.4.3/phaser.min.js"></script>
 		<script src="Killian.js"></script>
-		<script src="stateMachine.js"></script>
-   </head>
-   <body>
+		<script src="StateMachine.js"></script>
+	</head>
+	<body>
+		Press the RIGHT arrow key to change state.
+		<br/><br/>
 		<div id="state"></div>
-   <script type="text/javascript">
+		
+		<script type="text/javascript">
 
-			window.onload = function() {
-
+ 			window.onload = function() {
 
 				var game = new Phaser.Game(320, 240, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 				var killian;
-	
+
 				function preload () {
-					game.stage.backgroundColor = 0xFFFFFF;
-					game.load.atlas('killian', 'assets/sprites/killian.png', 'assets/sprites/killian.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+				  game.stage.backgroundColor = 0xFFFFFF;
+				  game.load.atlas('killian', 'assets/sprites/killian.png', 'assets/sprites/killian.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
 				}
 
 				function create () {
-					killian = new Killian( game, -50, -100 );
+				  killian = new Killian( game, -50, -100 );
 				}
-	
-				function update(){
-					document.getElementById('state').innerHTML = "<b>state:</b> " + killian.sm.currentState;
-				}
-	
-			};
 
-    </script>
-    </body>
+				function update(){
+				  document.getElementById('state').innerHTML = "<b>state:</b> " + killian.sm.currentState;
+				}
+		
+ 		}
+		</script>
+	</body>
 </html>
