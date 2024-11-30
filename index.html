@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Killian - Phaser Demo</title>
-		<script src="http://cdn.jsdelivr.net/phaser/2.4.3/phaser.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
 		<script src="Killian.js"></script>
 		<script src="stateMachine.js"></script>
 	</head>
@@ -16,16 +16,26 @@
 
  			window.onload = function() {
 
-				var game = new Phaser.Game(320, 240, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+				var config = {
+					type: Phaser.CANVAS,
+					width: 320,
+					height: 240,
+					scene: {
+						preload: preload,
+						create: create,
+						update: update
+					}
+				};
+
+				var game = new Phaser.Game(config);
 				var killian;
 
 				function preload () {
-				  game.stage.backgroundColor = 0xFFFFFF;
-				  game.load.atlas('killian', 'assets/sprites/killian.png', 'assets/sprites/killian.json',Phaser.Loader.TEXTURE_ATLAS_JSON_HASH);
+				  this.load.atlas('killian', 'assets/sprites/killian.png', 'assets/sprites/killian.json');
 				}
 
 				function create () {
-				  killian = new Killian( game, -50, -100 );
+				  killian = new Killian(this, -50, -100);
 				}
 
 				function update(){
